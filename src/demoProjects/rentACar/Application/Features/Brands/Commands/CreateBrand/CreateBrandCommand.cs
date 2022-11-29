@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Brands.Commands.CreateBrand
 {
-    public class CreateBrandCommand : IRequest<CreatedBrandDto>
+    public partial class CreateBrandCommand:IRequest<CreatedBrandDto>
     {
         public string Name { get; set; }
 
@@ -22,7 +22,7 @@ namespace Application.Features.Brands.Commands.CreateBrand
             private readonly IMapper _mapper;
             private readonly BrandBusinessRules _brandBusinessRules;
 
-            public CreateBrandCommandHandler(IBrandRepository brandRepository, IMapper mapper, BrandBusinessRules brandBusinessRules) 
+            public CreateBrandCommandHandler(IBrandRepository brandRepository, IMapper mapper, BrandBusinessRules brandBusinessRules)
             {
                 _brandRepository = brandRepository;
                 _mapper = mapper;
@@ -38,6 +38,7 @@ namespace Application.Features.Brands.Commands.CreateBrand
                 CreatedBrandDto createdBrandDto = _mapper.Map<CreatedBrandDto>(createdBrand);
 
                 return createdBrandDto;
+
             }
         }
     }

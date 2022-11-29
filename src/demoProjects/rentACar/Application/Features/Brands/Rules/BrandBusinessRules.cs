@@ -27,7 +27,7 @@ namespace Application.Features.Brands.Rules
 
         public void BrandShouldExistWhenRequested(Brand brand)
         {
-            if (brand == null) throw new BusinessException("Requested Brand does not exist.");
+            if (brand == null) throw new BusinessException("Requested brand does not exist");
         }
     }
 }

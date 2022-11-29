@@ -15,19 +15,21 @@ namespace WebAPI.Controllers
     public class ModelsController : BaseController
     {
         [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+        public async Task<ActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
-            GetListModelQuery getListModelQuery = new() { PageRequest = pageRequest };
+            GetListModelQuery getListModelQuery = new GetListModelQuery { PageRequest = pageRequest };
             ModelListModel result = await Mediator.Send(getListModelQuery);
             return Ok(result);
+
         }
 
         [HttpPost("GetList/ByDynamic")]
-        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
+        public async Task<ActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
         {
-            GetListModelByDynamicQuery getListByDynamicModelQuery = new() { PageRequest = pageRequest, Dynamic = dynamic };
+            GetListModelByDynamicQuery getListByDynamicModelQuery = new GetListModelByDynamicQuery { PageRequest = pageRequest, Dynamic = dynamic };
             ModelListModel result = await Mediator.Send(getListByDynamicModelQuery);
             return Ok(result);
+
         }
     }
 }

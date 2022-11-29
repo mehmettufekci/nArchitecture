@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 namespace Application.Features.Auths.Dtos
 {
     public class RegisteredDto
+    public class RegisteredDto:RefreshedTokenDto
     {
         public RefreshToken RefreshToken { get; internal set; }
         public AccessToken AccessToken { get; internal set; }
+        //
     }
 }

@@ -35,12 +35,12 @@ namespace Application.Features.Brands.Queries.GetByIdBrand
 
             public async Task<BrandGetByIdDto> Handle(GetByIdBrandQuery request, CancellationToken cancellationToken)
             {
-                Brand? brand = await _brandRepository.GetAsync(b => b.Id == request.Id);
+               Brand? brand =  await _brandRepository.GetAsync(b=>b.Id==request.Id);
 
-                _brandBusinessRules.BrandShouldExistWhenRequested(brand);
+               _brandBusinessRules.BrandShouldExistWhenRequested(brand);
 
-                BrandGetByIdDto brandGetByIdDto = _mapper.Map<BrandGetByIdDto>(brand);
-                return brandGetByIdDto;
+               BrandGetByIdDto brandGetByIdDto = _mapper.Map<BrandGetByIdDto>(brand);
+               return brandGetByIdDto;
             }
         }
     }

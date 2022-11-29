@@ -37,7 +37,7 @@ namespace Application.Features.Auths.Commands.Register
             {
                 await _authBusinessRules.EmailCanNotBeDuplicatedWhenRegistered(request.UserForRegisterDto.Email);
                 byte[] passwordHash, passwordSalt;
-                HashingHelper.CreatePasswordHash(request.UserForRegisterDto.Password,out passwordHash,out passwordSalt);
+                HashingHelper.CreatePasswordHash(request.UserForRegisterDto.Password, out passwordHash, out passwordSalt);
 
                 User newUser = new()
                 {
@@ -57,7 +57,7 @@ namespace Application.Features.Auths.Commands.Register
 
                 RegisteredDto registeredDto = new()
                 {
-                    RefreshToken = createdRefreshToken,
+                    RefreshToken = addedRefreshToken,
                     AccessToken = createdAccessToken,
                 };
                 return registeredDto;

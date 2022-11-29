@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
     public class AuthController : BaseController
     {
         [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
         {
             RegisterCommand registerCommand = new()
             {
@@ -22,14 +22,15 @@ namespace WebAPI.Controllers
             };
 
             RegisteredDto result = await Mediator.Send(registerCommand);
-            setRefreshTokenToCookie(result.RefreshToken);
+            SetRefreshTokenToCookie(result.RefreshToken);
             return Created("",result.AccessToken);
         }
 
-        private void setRefreshTokenToCookie(RefreshToken refreshToken)
+        private void SetRefreshTokenToCookie(RefreshToken refreshToken)
         {
-            CookieOptions cookieOptions = new() { HttpOnly = true, Expires = DateTime.Now.AddDays(7) };
-            Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
+            CookieOptions cookieOptions = new() { HttpOnly = true ,Expires = DateTime.Now.AddDays(7)};
+            Response.Cookies.Append("refreshToken",refreshToken.Token, cookieOptions);
         }
+
     }
 }

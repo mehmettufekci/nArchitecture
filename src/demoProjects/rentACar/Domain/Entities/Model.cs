@@ -17,7 +17,6 @@ namespace Domain.Entities
 
         public Model()
         {
-
         }
         public Model(int id, int brandId, string name, decimal dailyPrice, string imageUrl):this()
         {
